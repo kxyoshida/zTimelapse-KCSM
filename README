@@ -1,0 +1,1 @@
+This program consists of two parts, one to be uploaded to Arudino and an ImageJ macro example, and is intended to control light, camera and z-axis position in an old microscope system through an Arudino-implemented box.
