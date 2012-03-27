@@ -19,11 +19,7 @@ function initialize() {
 	run("serial ext");
 
 	ports=Ext.ports();
-	if (!ports) {
-		print("No ports available!");
-		return false;
-	}
-
+	print("Available ports="+ports);
 	active=Ext.alive();
 	if (Ext.alive()==1) {
 		print("active="+active+"");
@@ -93,7 +89,7 @@ macro "Unlock focus [u]" {
 	}
 }
 
-macro "Reset setpoint [r]" {
+macro "Reset setpoint to current position [r]" {
 	Ext.write("r");
 }
 
@@ -109,16 +105,17 @@ macro "Get the position value [v]" {
 	}
 }
 
-macro "Monitor the position value[m]" {
-        while (!isKeyDown("shift") {
-              Ext.write("V");
-	      wait(pause);
-	      while (!(readZValues(false))) {
-	      	    wait(pause);
-	      }
-	      wait(pause);
-       }
-}
+/* This macro has a problem */
+// macro "Monitor the position value[m]" {
+//         while (!isKeyDown("shift")) {
+//               Ext.write("V");
+// 	      wait(pause);
+// 	      while (!(readZValues(false))) {
+// 	      	    wait(pause);
+// 	      }
+// 	      wait(pause);
+//        }
+// }
 
 macro "Set z-position [z]" {
 	zLevel=getNumber("Input z-position (<=1000 at once, 1unit~0.1um)",zLevel);
